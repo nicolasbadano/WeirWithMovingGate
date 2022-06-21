@@ -9,7 +9,9 @@ This project implements a moving mesh technique on OpenFOAM to solve the case a 
 
 ## Video summary
 
-[![Watch the video](https://img.youtube.com/vi/DoAwPhJ1nzU/default.jpg)](https://youtu.be/DoAwPhJ1nzU)
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=DoAwPhJ1nzU" target="_blank">
+ <img src="http://img.youtube.com/vi/DoAwPhJ1nzU/hqdefault.jpg" alt="Watch the video"  width="480" height="360  " border="10" />
+</a>
 
 ## License
 
