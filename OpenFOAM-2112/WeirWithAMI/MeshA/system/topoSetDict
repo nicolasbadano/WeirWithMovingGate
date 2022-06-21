@@ -1,0 +1,181 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2112                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    // Get both sides of ami
+    // ~~~~~~~~~~~~~~~~~~~~~
+
+    // Create faceZone for patch amiAB
+    {
+        name    amiABFaceSet;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+            name    amiAB;
+        }
+    }
+    {
+        name    amiABFaces;
+        type    faceZoneSet;
+        action  new;
+        source  setToFaceZone;
+        sourceInfo
+        {
+            faceSet amiABFaceSet;
+        }
+    }
+
+    // Create faceZone for patch amiAA
+    {
+        name    amiAAFaceSet;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+            name    amiAA;
+        }
+    }
+    {
+        name    amiAAFaces;
+        type    faceZoneSet;
+        action  new;
+        source  setToFaceZone;
+        sourceInfo
+        {
+            faceSet amiAAFaceSet;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    // Create faceZone for patch amiBA
+    {
+        name    amiBAFaceSet;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+            name    amiBA;
+        }
+    }
+    {
+        name    amiBAFaces;
+        type    faceZoneSet;
+        action  new;
+        source  setToFaceZone;
+        sourceInfo
+        {
+            faceSet amiBAFaceSet;
+        }
+    }
+
+    // Create faceZone for patch amiBB
+    {
+        name    amiBBFaceSet;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+            name    amiBB;
+        }
+    }
+    {
+        name    amiBBFaces;
+        type    faceZoneSet;
+        action  new;
+        source  setToFaceZone;
+        sourceInfo
+        {
+            faceSet amiBBFaceSet;
+        }
+    }
+
+
+    // Create cellZone for moving cells in inlet gateZone
+    {
+        name    gateZoneCellSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo
+        {
+            box     (-0.4 -4.8 -0.05) (0 4.8 100);
+        }
+    }
+    {
+        name    gateZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo
+        {
+            set     gateZoneCellSet;
+        }
+    }
+
+    {
+        name    gateLipFaceSet;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+            name    gateLip;
+        }
+    }
+    {
+        name        gateLipFaceZone;
+        type        faceZoneSet;
+        action      new;
+        source      setToFaceZone;
+        faceSet     gateLipFaceSet;
+    }
+
+    {
+        name    gateFloorFaceSet;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+            name    gateFloor;
+        }
+    }
+    {
+        name        gateFloorFaceZone;
+        type        faceZoneSet;
+        action      new;
+        source      setToFaceZone;
+        faceSet     gateFloorFaceSet;
+    }
+);
+
+// ************************************************************************* //
